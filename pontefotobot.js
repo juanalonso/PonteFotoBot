@@ -1,36 +1,46 @@
-const config = require('./config.js');
+const config = require('./config.js')
 
-var camera = config.debug_mode ? '📷' : '📸';
+var camera = config.debug_mode ? '📷' : '📸'
 
 if (config.debug_mode) {
-    console.log(camera + ': Estoy despierto, pero callado');
+    console.log(camera + ': Estoy despierto, pero callado')
 } else {
-    console.log(camera + ': ¡Estoy despierto!');
+    console.log(camera + ': ¡Estoy despierto!')
 }
 
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const Discord = require('discord.js')
+const client = new Discord.Client()
 
-client.login(config.bot_token)
-    .then(() => {
+client.login(config.bot_token).then(getChannelInfo);
 
-        console.log(camera + ': ¡Estoy conectado!');
 
-        client.channels.fetch(config.valid_channel)
-            .then(channel => {
-                channel.guild.members.fetch()
-                    .then(guildMembers => {
-                        guildMembers.each(member => {
-                            if (!member.user.bot && member.user.avatar === null) {
-                                console.log(camera + ': @' + member.user.username);
-                                if (!config.debug_mode) {
-                                    channel.send(member.user.toString() + ' ponte foto!!! 📸');
-                                }
-                            }
-                        })
-                        client.destroy();
-                    })
-                    .catch(console.error);
-            })
-            .catch(console.error);
-    });
+function getChannelInfo() {
+    console.log(camera + ': ¡Estoy conectado!')
+    client.channels
+        .fetch(config.valid_channel)
+        .then(channel => getMembers(channel))
+        .catch(console.error)
+}
+
+
+function getMembers(channel) {
+    channel.guild.members
+        .fetch()
+        .then(guildMembers => processMembers(guildMembers, channel))
+        //.then(client.destroy())
+        .catch(console.error)
+}
+
+
+function processMembers(guildMembers, channel) {
+    guildMembers
+        .filter(member => !member.user.bot)
+        .filter(member => member.user.avatar === null)
+        .each(member => {
+            console.log(camera + ':     @' + member.user.username)
+            if (!config.debug_mode) {
+                channel.send(member.user.toString() + ' ponte foto!!! 📸')
+            }
+        })
+    console.log(camera + ': Hasta mañana')
+}
