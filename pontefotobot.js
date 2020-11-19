@@ -1,14 +1,20 @@
-console.log("📸: ¡Estoy despierto!");
-
 const config = require('./config.js');
-const Discord = require('discord.js');
 
+var camera = config.debug_mode ? '📷' : '📸';
+
+if (config.debug_mode) {
+    console.log(camera + ': Estoy despierto, pero callado');
+} else {
+    console.log(camera + ': ¡Estoy despierto!');
+}
+
+const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.login(config.bot_token)
     .then(() => {
 
-        console.log('📸: ¡Estoy conectado!');
+        console.log(camera + ': ¡Estoy conectado!');
 
         client.channels.fetch(config.valid_channel)
             .then(channel => {
@@ -16,8 +22,10 @@ client.login(config.bot_token)
                     .then(guildMembers => {
                         guildMembers.each(member => {
                             if (!member.user.bot && member.user.avatar === null) {
-                                console.log('📸: @' + member.user.username);
-                                //channel.send(member.user.toString() + " ponte foto!!! 📸");
+                                console.log(camera + ': @' + member.user.username);
+                                if (!config.debug_mode) {
+                                    channel.send(member.user.toString() + ' ponte foto!!! 📸');
+                                }
                             }
                         })
                         client.destroy();
