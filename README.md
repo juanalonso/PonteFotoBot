@@ -10,7 +10,7 @@ He montado un bot en Discord que hace exactamente lo mismo. PonteFotoBot se cone
 
 El bot se conecta al servidor y se baja la información del canal que se haya indicado en el fichero de configuración (`getChannelInfo`). Con esa información se hace una segunda llamada para obtener la lista de miembros (`getMembers`). Esa lista se analiza miembro a miembro (`processMembers`), y compone un mensaje con la lista de usuarios. Si la variable `debug_mode` –también definida en el fichero de configuración– es `true`, saca la lista por pantalla. Si es `false`, envía el mensaje. Finalmente, el bot corta la conexión.
 
-OJO: el bot está probado lo justo, tampoco lo soltéis a lo loco en un servidor con 20.000 usuarios.
+**⚠️⚠️⚠️OJO: el bot está probado lo justo, tampoco lo soltéis a lo loco en un servidor con 20.000 usuarios.⚠️⚠️⚠️**
 
 ## Puesta en marcha
 
@@ -76,7 +76,7 @@ Para no tener que ejecutar el bot manualmente –y teniendo acceso a un servidor
 
 En este caso, el bot se ejecutaría todos los días a las 14:35.
 
-### Agradecimientos
+## Agradecimientos
 
 El empujón para hacer el bot viene de Daniel Shiffman y su serie "How to make a Discord bot with discord.js"
 
