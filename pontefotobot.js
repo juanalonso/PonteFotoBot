@@ -27,20 +27,25 @@ function getMembers(channel) {
     channel.guild.members
         .fetch()
         .then(guildMembers => processMembers(guildMembers, channel))
-        //.then(client.destroy())
         .catch(console.error)
 }
 
 
 function processMembers(guildMembers, channel) {
+    var message = '';
     guildMembers
         .filter(member => !member.user.bot)
         .filter(member => member.user.avatar === null)
         .each(member => {
+            message += member.user.toString() + ' ponte foto!!! 📸\n'
             console.log(camera + ':     @' + member.user.username)
-            if (!config.debug_mode) {
-                channel.send(member.user.toString() + ' ponte foto!!! 📸')
-            }
         })
-    console.log(camera + ': Hasta mañana')
+    if (!config.debug_mode && message !== '') {
+        channel.send(message)
+            .then(() => client.destroy())
+            .catch(console.error)
+    } else {
+        console.log(camera + ': Hasta mañana')
+        client.destroy()
+    }
 }
