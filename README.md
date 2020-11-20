@@ -4,7 +4,7 @@ En mi antiguo trabajo (Tecnilógica / LiquidSquad / Accenture), cada vez que alg
 
 He montado un bot en Discord que hace exactamente lo mismo. PonteFotoBot se conecta a un canal determinado todos los días a la misma hora, mira  la lista de usuarios humanos (vamos, los que no son bots) que no tienen foto de perfil y les avisa.
 
-![PonteFotoBot en funcionamiento](https://user-images.githubusercontent.com/1846199/99850924-87412800-2b7e-11eb-8aee-1457106e96f9.png)
+<img src="https://user-images.githubusercontent.com/1846199/99850924-87412800-2b7e-11eb-8aee-1457106e96f9.png" width="25%">
 
 ## Cómo funciona
 
@@ -30,7 +30,7 @@ El siguiente paso es seleccionar Bot en el menú de la izquierda. Aquí tenemos 
 2. Apuntar el **TOKEN** en algún lado.
 3. Activar el switch "**Server members intent**". En otro caso, no se puede acceder a la lista de usuarios, pero no da error y es un quebradero de cabeza hasta que te das cuenta. A lo mejor me pasó a mí.
 
-![Server Members Intent](https://user-images.githubusercontent.com/1846199/99850931-890aeb80-2b7e-11eb-8414-d57bb275e0d0.png)
+<img src="https://user-images.githubusercontent.com/1846199/99850931-890aeb80-2b7e-11eb-8414-d57bb275e0d0.png" width="75%">
 
 
 ### 3.- Autorizar el bot en un servidor
@@ -47,7 +47,7 @@ Se abrirá una página de Discord preguntándonos a qué servidor queremos asoci
 
 También necesitamos el ID del canal donde se va a ejecutar el bot. Lo más cómodo es, en la aplicación de escritorio, ir a **Ajustes de usuario / apariencia / Avanzado** y activar el switch "**Modo desarrollador**". Una vez activado, haciendo clic derecho sobre el nombre de un canal, de un usuario o de un servidor, aparece una opción más para obtener el ID de ese objeto.
 
-![Modo Desarrollador](https://user-images.githubusercontent.com/1846199/99850919-85776480-2b7e-11eb-9fd5-83de9a8be385.png)
+<img src="https://user-images.githubusercontent.com/1846199/99850919-85776480-2b7e-11eb-9fd5-83de9a8be385.png" width="75%">
 
 
 ### 5.- Configurar los parámetros
@@ -64,7 +64,7 @@ Inicialmente, el bot está en modo debug  (`config.debug_mode = true;` en el fic
 
 Al ejecutar `node pontefotobot.js`, deberíamos obtener una salida como esta: la lista de usuarios humanos (no bots) que están en el canal indicado y que no han cambiado el avatar por defecto. 
 
-![Captura-de-pantalla-2020-11-19-a-las-13 46 10](https://user-images.githubusercontent.com/1846199/99850928-87d9be80-2b7e-11eb-8918-3802303ba704.png)
+<img src="https://user-images.githubusercontent.com/1846199/99850928-87d9be80-2b7e-11eb-8918-3802303ba704.png" width="40%">
 
 Una vez que hemos comprobado que todo funciona, basta con cambiar desactivar el modo debug (`config.debug_mode = false;`) para que cada vez que ejecutemos el bot, aparezca la información en el canal.
 
